@@ -15,7 +15,8 @@ def run_streamlit_app():
             if response.status_code == 200:
                 data = response.json()
                 if data["type"] == "database":
-                    st.write("Database Response:", data["results"])
+                    st.write("Quering the database...")
+                    st.write("Database Response:", data["results"]['output'])
                 else:
                     st.write("LLM Response:", data["response"])
             else:

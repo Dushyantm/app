@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from .intent_detection import IntentDetection
 import sqlite3
 from typing import List, Dict
+from .sql_agent import execute_sql_query
 
 app = FastAPI()
 
@@ -40,16 +41,12 @@ async def process_query(query: Query):
     intent = intent_detector.detect_intent()
     
     if intent.strip().upper() == "SQL":
-        conn = get_db_connection()
-        cursor = conn.cursor()
         try:
-            cursor.execute(query.text)
-            results = cursor.fetchall()
-            return {"type": "database", "results": [dict(row) for row in results]}
-        except sqlite3.Error as e:
+            result = execute_sql_query(query.text)
+            # print(result)
+            return {"type": "database", "results": result}
+        except Exception as e:
             raise HTTPException(status_code=400, detail=str(e))
-        finally:
-            conn.close()
     elif intent.strip().upper() == "LLM":
         # Here you would typically call your LLM to process the query
         # For now, we'll just return a placeholder response
