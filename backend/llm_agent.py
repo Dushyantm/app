@@ -36,7 +36,7 @@ class QueryLLM:
 
         Response: The distance between Boston and Qubec is 400 miles approximately. You can reach there by flight from boston in less than 4 hours.
 
-        Now respond to the user query:
+        Now respond to the user query in a well formatted manner.:
         User: {query}
         Reponse: 
 '''
