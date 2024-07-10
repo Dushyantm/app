@@ -16,9 +16,9 @@ def run_streamlit_app():
                 data = response.json()
                 if data["type"] == "database":
                     st.write("Quering the database...")
-                    st.write("Database Response:", data["results"]['output'])
+                    st.write("Response:", data["results"]['output'])
                 else:
-                    st.write("LLM Response:", data["response"])
+                    st.write("Response:", data["response"])
             else:
                 st.write("Error:", response.text)
         else:

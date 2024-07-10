@@ -5,6 +5,7 @@ from .intent_detection import IntentDetection
 import sqlite3
 from typing import List, Dict
 from .sql_agent import execute_sql_query
+from .llm_agent import QueryLLM
 
 app = FastAPI()
 
@@ -50,6 +51,10 @@ async def process_query(query: Query):
     elif intent.strip().upper() == "LLM":
         # Here you would typically call your LLM to process the query
         # For now, we'll just return a placeholder response
-        return {"type": "llm", "response": "This query would be processed by the LLM."}
+        try:
+            response = QueryLLM(query.text).generate_response()
+            return {"type": "llm", "response": response}
+        except Exception as e:
+            raise HTTPException(status_code=400, detail=str(e))
     else:
         raise HTTPException(status_code=400, detail="Unknown intent")

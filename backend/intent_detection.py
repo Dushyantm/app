@@ -58,5 +58,5 @@ CREATE TABLE travel_packages (
         )
         intent_chain = intent_prompt | llm
         response = intent_chain.invoke(self.query)
-        print(response.content)  # Print the response
+        # print(response.content)  # Print the response
         return response.content.strip().upper()
