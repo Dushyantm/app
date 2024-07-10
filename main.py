@@ -1,13 +1,5 @@
-import os
-from backend import IntentDetection
-from frontend import run_streamlit_app
-
-def main():
-    # response = IntentDetection(query).detect_intent()
-    run_streamlit_app(IntentDetection)
-    # return response
+import uvicorn
+from backend.api import app
 
 if __name__ == "__main__":
-    # query = "What is the distance from London to New York?"
-    # main(query=query)
-    main()
+    uvicorn.run(app, host="0.0.0.0", port=8000)

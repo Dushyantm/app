@@ -1,0 +1,59 @@
+{
+    "travel_agents": [
+        {
+            "name": "Wanderlust Adventures",
+            "email": "info@wanderlustadv.com",
+            "phone": "+1-555-123-4567",
+            "website": "www.wanderlustadventures.com"
+        },
+        {
+            "name": "Globe Trotters Inc.",
+            "email": "contact@globetrotters.com",
+            "phone": "+1-555-987-6543",
+            "website": "www.globetrottersinc.com"
+        }
+    ],
+    "destinations": [
+        {
+            "name": "Paris",
+            "country": "France",
+            "description": "The City of Light"
+        },
+        {
+            "name": "Bali",
+            "country": "Indonesia",
+            "description": "Island of the Gods"
+        },
+        {
+            "name": "New York City",
+            "country": "USA",
+            "description": "The Big Apple"
+        }
+    ],
+    "travel_packages": [
+        {
+            "agent_id": 1,
+            "destination_id": 1,
+            "name": "Parisian Escape",
+            "description": "Experience the romance of Paris",
+            "duration_days": 7,
+            "price": 1999.99
+        },
+        {
+            "agent_id": 1,
+            "destination_id": 2,
+            "name": "Bali Bliss",
+            "description": "Relax on beautiful beaches",
+            "duration_days": 10,
+            "price": 2499.99
+        },
+        {
+            "agent_id": 2,
+            "destination_id": 3,
+            "name": "NYC Adventure",
+            "description": "Explore the city that never sleeps",
+            "duration_days": 5,
+            "price": 1499.99
+        }
+    ]
+}

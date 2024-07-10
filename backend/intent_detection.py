@@ -51,12 +51,7 @@ CREATE TABLE travel_packages (
         Just mention the response and nothing else.
 '''
         llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
-        # prompt = PromptTemplate.from_template(template)
-        # prompt.invoke({"query": self.query})
-        # parser = StrOutputParser()
-        # chain = prompt | llm | parser
-        # print(chain.invoke())
-        # return response        
+
         intent_prompt = PromptTemplate(
             input_variables=["query"],
             template=template
@@ -64,7 +59,4 @@ CREATE TABLE travel_packages (
         intent_chain = intent_prompt | llm
         response = intent_chain.invoke(self.query)
         print(response.content)  # Print the response
-        return response.content
-        # def detect_intent(query: str) -> str:
-        #     response = intent_chain.run(query).strip().lower()
-        #     return response if response in ["database", "llm"] else "unknown"
+        return response.content.strip().upper()
