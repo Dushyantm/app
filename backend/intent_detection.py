@@ -9,9 +9,14 @@ class IntentDetection:
 
     def detect_intent(self):
         template = '''
-        Detect the intent of the query. 
-        The schema for the SQL database is:
-        -- Travel Agents
+Determine the Intent of User Queries for Database Interaction
+
+Database Schema Overview:
+
+1. Travel Agents Table
+Stores data about travel agents, including an identifier, name, email, phone number, and website.
+Schema:
+
 CREATE TABLE travel_agents (
     agent_id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
@@ -19,16 +24,20 @@ CREATE TABLE travel_agents (
     phone TEXT,
     website TEXT
 );
+2. Destinations Table
+Contains information about travel destinations such as an identifier, name, country, and description.
+Schema:
 
--- Destinations
 CREATE TABLE destinations (
     destination_id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     country TEXT NOT NULL,
     description TEXT
 );
+3. Travel Packages Table
+Holds records of travel packages, linked to travel agents and destinations. Includes details like package name, description, duration, and price.
+Schema:
 
--- Travel Packages
 CREATE TABLE travel_packages (
     package_id INTEGER PRIMARY KEY,
     agent_id INTEGER,
@@ -40,15 +49,24 @@ CREATE TABLE travel_packages (
     FOREIGN KEY (agent_id) REFERENCES travel_agents (agent_id),
     FOREIGN KEY (destination_id) REFERENCES destinations (destination_id)
 );
+Query Intent Detection:
 
-        Return if the query requires data from the SQL database or should be executed by the general LLM agent.
-        Responses:
-        1. SQL
-        2. LLM
+Decide whether a user's query pertains to extracting or manipulating data from the described SQL database, 
+or if it should be handled by a general Language Learning Model (LLM) for non-database-related tasks.
 
-        Query: {query}
+Possible Responses:
+1. SQL
+2. LLM
 
-        Just mention the response and nothing else.
+Example:
+User Query: "I want to book a flight to boston can you help me with some travel agents details"
+Intent: SQL
+
+User Query: "What is the distance from Boston to Qubec?"
+Intent: LLM
+
+User Query: {query}
+Intent: 
 '''
         llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
 
