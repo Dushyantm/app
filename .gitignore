@@ -1,0 +1,59 @@
+# .gitignore
+# Python
+*.pyc
+__pycache__/
+*.egg-info/
+dist/
+build/
+*.so
+*.egg
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+*.pydevproject
+*.pydevpylauncher
+*.pycharm*
+*.sublime*
+*.sublime-workspace
+# Environment
+*.env
+.env
+.env.local
+.env.*.local
+.env.*.json
+venv/
+# Logs
+logs/
+# Tests
+*.spec
+coverage.xml
+.tox/
+.nox/
+.coverage
+.cache
+nosetests.xml
+coverage/
+# Miscellaneous
+.DS_Store
+*~
+*.pyd
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+
+# FastAPI
+.env
+.env.local
+.env.*.local
+.env.*.json
+
+# Streamlit
+.sterror.log
+.stsession-*

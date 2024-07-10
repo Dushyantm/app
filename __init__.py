@@ -1,0 +1,2 @@
+from backend.intent_detection import IntentDetection
+from frontend.streamlit_app import run_streamlit_app
