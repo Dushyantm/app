@@ -5,7 +5,7 @@ import requests
 API_URL = "http://localhost:8000"
 
 def run_streamlit_app():
-    st.title("AI Travel Agent")
+    st.title("Journey Genie")
 
     # Initialize chat history
     if "messages" not in st.session_state:
